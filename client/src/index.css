@@ -130,21 +130,6 @@ p {
 }
 
 
-.pending {
-  background: red;
-  color: white
-}
-
-.interview {
-  background: rgb(158, 251, 218);
-  color: rgb(78, 78, 78)
-}
-
-.declined {
-  background: rgb(54, 56, 200);
-  color: white
-}
-
 /* ============================================
                 MEDIA QUERIES 
    ============================================ */
