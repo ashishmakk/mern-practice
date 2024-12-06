@@ -54,7 +54,7 @@ export const validateJobId = validationErrors([
       throw new Error("Invalid ID");
     }
 
-    const job = await Job.findById(value);
+    const job = await Job.findOne({ _id: value });
 
     const adminUser = req.user.role === "admin";
     const validOwner = job.createdBy.toString() === req.user.userId;
@@ -64,7 +64,7 @@ export const validateJobId = validationErrors([
     }
 
     if (!job) {
-      throw new Error(`no job existed with Id: ${value}`);
+      throw new NotFoundError(`no job existed with Id: ${value}`);
     }
   }),
 ]);
