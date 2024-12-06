@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Form,
   redirect,
@@ -19,7 +18,8 @@ export const action = async ({ request }) => {
   try {
     await customFetch.post("/jobs", data);
     toast.success("Job created successfully");
-    return null;
+
+    return redirect('/dashboard/all-jobs');
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     console.log(error);

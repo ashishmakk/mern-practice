@@ -6,7 +6,7 @@ import { createContext, useContext } from "react";
 export const loader = async () => {
   try {
     const { data } = await customFetch.get("/jobs");
-
+     
     return { data };
   } catch (error) {
     console.log(error);

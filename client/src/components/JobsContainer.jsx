@@ -14,11 +14,13 @@ function JobsContainer() {
   }
 
   return (
-    <section>
+    <section className="mt-4">
       <h2>All Jobs</h2>
-      {allJobs.map((job) => {
-        return <Job key={job._id} {...job} />;
-      })}
+      <div className="mt-4 grid md:grid-cols-2 gap-x-6 gap-y-6">
+        {allJobs.map((job) => {
+          return <Job key={job._id} {...job} />;
+        })}
+      </div>
     </section>
   );
 }

@@ -129,6 +129,22 @@ p {
   color: rgb(252, 252, 252);
 }
 
+
+.pending {
+  background: red;
+  color: white
+}
+
+.interview {
+  background: rgb(158, 251, 218);
+  color: rgb(78, 78, 78)
+}
+
+.declined {
+  background: rgb(54, 56, 200);
+  color: white
+}
+
 /* ============================================
                 MEDIA QUERIES 
    ============================================ */
@@ -154,13 +170,11 @@ p {
   h3 {
     font-size: 1.85rem;
     line-height: 2.25rem;
-    margin-bottom: 1rem;
   }
 
   h4 {
     font-size: 1.5rem;
     line-height: 2rem;
-    margin-bottom: 0.8rem;
   }
 
   .btn {
