@@ -96,6 +96,20 @@ p {
   background: #151515;
 }
 
+.delete-btn {
+  background: #a50000;
+  color: #ffffff;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  border-radius: 0.25rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #1e1e1e;
+}
+
 .form-btn {
   background: #6671e5;
   color: #ffffff;
@@ -128,7 +142,6 @@ p {
 .active:hover {
   color: rgb(252, 252, 252);
 }
-
 
 /* ============================================
                 MEDIA QUERIES 
@@ -163,6 +176,10 @@ p {
   }
 
   .btn {
+    font-size: 1.1rem;
+  }
+
+  .delete-btn {
     font-size: 1.1rem;
   }
 }
