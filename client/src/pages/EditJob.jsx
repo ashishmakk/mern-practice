@@ -2,7 +2,7 @@ import React from 'react'
 import customFetch from '../utils/customFetch';
 import { Form, redirect, useLoaderData } from 'react-router-dom';
 import { FormRow, FormRowSelect } from '../components';
-import { jobTypeArray } from '../utils/constants';
+import { jobStatusArray, jobTypeArray } from '../utils/constants';
 import { toast } from 'react-toastify';
 
 
@@ -33,9 +33,18 @@ function EditJob() {
   const {job} = useLoaderData(); 
     console.log(job);
     
-  return (
-    <section>
-<h2>asdasd</h2>
+  return (<section>
+     <Form method='post' >
+      <h2>Update Job</h2>
+      <div className='grid  md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6'>
+      <FormRow name='company' type='text' defaultValue={job.company} />
+      <FormRow name='position' type='text' defaultValue={job.position} />
+      <FormRow name='jobLocation' labelText='location' type='text' defaultValue={job.jobLocation} />
+      <FormRowSelect name="jobType" labelText="Job Type" data={jobTypeArray} defaultValue={job.jobType} />
+      <FormRowSelect name='jobStatus' labelText='Job Status' data={jobStatusArray} defaultValue={job.jobStatus} />
+      </div>
+      <button type='submit' className='form-btn w-40 mt-5'>submit</button>
+     </Form>
     </section>
   )
 }
