@@ -17,14 +17,22 @@ export const loader = async ({ params }) => {
    toast.error(error?.response?.data?.msg)
     return redirect('../all-jobs')
   }
-
 }
 
+export const action = async ({params, request}) => {
+  
+  const formData = await request.formData(); 
+  const data = await Object.fromEntries(formData); 
 
-
-export const action = async () => {
-
-return null
+  try {
+   await customFetch.patch(`/jobs/${params.id}`, data);
+   
+   toast.success('Job updated successfully');
+   return redirect('../all-jobs');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect('../all-jobs');
+  }
 
 }
 
