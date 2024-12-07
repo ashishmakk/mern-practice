@@ -1,6 +1,6 @@
 import React from 'react'
 import customFetch from '../utils/customFetch';
-import { Form, redirect, useLoaderData } from 'react-router-dom';
+import { Form, redirect, useLoaderData, useNavigation } from 'react-router-dom';
 import { FormRow, FormRowSelect } from '../components';
 import { jobStatusArray, jobTypeArray } from '../utils/constants';
 import { toast } from 'react-toastify';
@@ -39,8 +39,13 @@ export const action = async ({params, request}) => {
 function EditJob() {
    
   const {job} = useLoaderData(); 
-    console.log(job);
     
+  const navigation = useNavigation();
+  console.log(navigation);
+  
+  const isSubmitting = navigation.state === 'submitting';
+
+
   return (<section>
      <Form method='post' >
       <h2>Update Job</h2>

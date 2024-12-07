@@ -7,6 +7,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoFlagSharp } from "react-icons/io5";
 import { Form, redirect, Link } from "react-router-dom";
 
+
 function Job({_id, company, position, jobLocation, jobType, createdAt, jobStatus }) {
   
   dayjs.extend(advancedFormat);
@@ -33,7 +34,7 @@ function Job({_id, company, position, jobLocation, jobType, createdAt, jobStatus
     </div>
     <footer className='flex gap-x-2 mt-3 lg:mt-4'>
     <Link to={`../edit-job/${_id}`} className='btn capitalize'>edit job</Link>
-    <Form>
+    <Form method="post" action={`../delete-job/${_id}`} >
     <button type='submit' className='delete-btn capitalize'>delete job</button>
     </Form>
     </footer>
