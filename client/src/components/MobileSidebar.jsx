@@ -25,6 +25,7 @@ function MobileSidebar() {
 
             return (
               <NavLink
+              key={text}
                 to={path}
                 className='flex items-center gap-x-2 text-xl hover:text-red-700'
                 onClick={toggleSidebar}

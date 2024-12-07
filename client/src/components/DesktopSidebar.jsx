@@ -25,6 +25,7 @@ function DesktopSidebar() {
 
           return (
             <NavLink
+            key={text}
               to={path}
               end
               className='menu-item flex items-center gap-y-2 gap-x-3 text-xl capitalize rounded'
