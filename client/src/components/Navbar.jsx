@@ -2,7 +2,7 @@ import { useGlobalContext } from "../pages/DashboardLayout";
 import { FaAlignLeft } from "react-icons/fa";
 
 function Navbar() {
-  const { user, toggleSidebar } = useGlobalContext();
+  const { user, toggleSidebar, logoutUser } = useGlobalContext();
 
   return (
     <section className='flex sticky top-0 justify-center items-center bg-[#f2f2f2] py-4 md:py-6 '>
@@ -15,7 +15,7 @@ function Navbar() {
         </h2>
         <div className='flex items-center gap-x-4 text-[#181818]'>
           <p className=" capitalize">Hello, {user.name}</p>
-          <button type='button' className="btn">Logout</button>
+          <button type='button' className="btn" onClick={logoutUser}>Logout</button>
         </div>
       </div>
     </section>

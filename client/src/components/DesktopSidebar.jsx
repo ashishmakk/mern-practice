@@ -4,7 +4,7 @@ import links from "../utils/links";
 import { NavLink } from "react-router-dom";
 
 function DesktopSidebar() {
-  const { sidebarOpen } = useGlobalContext();
+  const { sidebarOpen, user } = useGlobalContext();
 
   return (
     <section
