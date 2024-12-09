@@ -1,4 +1,3 @@
-import React from "react";
 import { FaLocationArrow, FaCalendarAlt } from "react-icons/fa";
 import dayjs from "dayjs";
 import advancedFormat from 'dayjs/plugin/advancedFormat';

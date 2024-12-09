@@ -1,17 +1,16 @@
-import React from "react";
 import { useGlobalContext } from "../pages/DashboardLayout";
 import links from "../utils/links";
 import { NavLink } from "react-router-dom";
 
 function DesktopSidebar() {
-  const { sidebarOpen, user } = useGlobalContext();
+  const { sidebarOpen } = useGlobalContext();
 
   return (
     <section
       className={
         sidebarOpen
           ? "hidden"
-          : "hidden px-6 bg-[#f2f2f2] md:h-[100vh] md:block"
+          : "hidden px-6 bg-[#f2f2f2] md:h-[100%] sticky md:block"
       }
     >
       <div className='mt-6 grid grid-rows-[auto_1fr] gap-y-8'>
@@ -25,7 +24,7 @@ function DesktopSidebar() {
 
           return (
             <NavLink
-            key={text}
+              key={text}
               to={path}
               end
               className='menu-item flex items-center gap-y-2 gap-x-3 text-xl capitalize rounded'
