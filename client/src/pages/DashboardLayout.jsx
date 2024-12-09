@@ -40,7 +40,7 @@ function DashboardLayout() {
         className={
           sidebarOpen
             ? "grid grid-cols-1"
-            : "grid grid-cols-1 md:grid-cols-[auto_1fr]"
+            : "grid grid-cols-1 md:grid-cols-[auto_1fr] md:min-h-[100vh]"
         }
       >
         <MobileSidebar />

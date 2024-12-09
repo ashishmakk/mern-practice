@@ -115,11 +115,5 @@ export const validateUserUpdateInput = validationErrors([
         throw new Error("email already exists");
       }
     }),
-
-  body("password")
-    .notEmpty()
-    .withMessage("password is required")
-    .isLength({ min: 6 })
-    .withMessage("password must be at least 8 characters long"),
   body("location").notEmpty().withMessage("location is required"),
 ]);
