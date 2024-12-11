@@ -11,6 +11,9 @@ export const getCurrentUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
+
+  console.log(req.file);
+  
   let obj = { ...req.body };
 
   delete obj.password;

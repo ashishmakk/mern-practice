@@ -17,7 +17,7 @@ export const loader = async () => {
 
 function Admin() {
   const { users, jobs } = useLoaderData();
-
+  
   return (
     <section>
       <h2>Application Stats</h2>

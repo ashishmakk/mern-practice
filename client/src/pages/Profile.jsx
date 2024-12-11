@@ -1,15 +1,26 @@
 import { Form, useNavigation, useOutletContext } from "react-router-dom";
 import { FormRow } from "../components";
 import { toast } from "react-toastify";
+import customFetch from "../utils/customFetch";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
 
+  const file = formData.get("avatar");
+
+  if (file && file.size > 500000) {
+    toast.error("file size too large");
+    return null;
+  }
+
   try {
+    const updateUser = await customFetch.patch("/users/update-user", formData);
+    toast.success("profile updated successfully");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
-    return error;
   }
+
+  return null;
 };
 
 function Profile() {
@@ -20,7 +31,7 @@ function Profile() {
 
   return (
     <section>
-      <Form method='post' encType="multipart/form-data">
+      <Form method='post' encType='multipart/form-data'>
         <h2>Update Profile</h2>
         <div className='grid  md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6'>
           <div className='flex flex-col gap-y-2'>
