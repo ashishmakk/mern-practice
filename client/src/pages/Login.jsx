@@ -1,7 +1,8 @@
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigate, useNavigation } from "react-router-dom";
 import { FormRow } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
+
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -27,8 +28,20 @@ export const action = async ({ request }) => {
 function Login() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-
+  const navigate = useNavigate()
   const actionData = useActionData();
+
+  const loginTestUser = async () => {
+    const testUser = { email: "test@gmail.com", password: "secret" };
+
+    try {
+      await customFetch.post("/auth/login", testUser);
+      toast.success('Login successful')
+      return navigate("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg)
+    }
+  };
 
   return (
     <section className='alignment my-20'>
@@ -53,7 +66,7 @@ function Login() {
         <button type='submit' className='btn mt-2' disabled={isSubmitting}>
           {isSubmitting ? "Submitting" : "Submit"}
         </button>
-        <button type='button' className='btn mt-2'>
+        <button type='button' className='btn mt-2' onClick={loginTestUser}>
           Explore the app
         </button>
       </Form>
