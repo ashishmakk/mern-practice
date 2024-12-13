@@ -12,7 +12,7 @@ const app = express();
 try {
   await mongoose.connect(process.env.MONGO_URL);
 
-  const user = await User.findOne({ email: "test@gmail.com" });
+  const user = await User.findOne({ email: "roger@gmail.com" });
   
   const jobData = JSON.parse(
     await readFile(new URL("./utils/mockData.json", import.meta.url))
