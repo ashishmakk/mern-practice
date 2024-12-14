@@ -29,7 +29,7 @@ function StatsContainer({ defaultStats }) {
               <h4 className='font-bold text-4xl md:text-5xl text-[#6671e5]'>
                 {item.count}
               </h4>
-              <h4 className='text-2xl md:text-2xl font-medium'>{item.title}</h4>
+              <h4 className='text-xl md:text-2xl'>{item.title}</h4>
             </div>
           );
         })}
