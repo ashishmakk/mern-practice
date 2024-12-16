@@ -3,12 +3,12 @@ import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
 import dayjs from "dayjs";
 
+
 export const getAllJobs = async (req, res) => {
 
   const { search, jobType, jobStatus, sort } = req.query;
-  
+
   console.log(req.query);
-  
 
   const queryObj = {
     createdBy: req.user.userId,
@@ -20,26 +20,35 @@ export const getAllJobs = async (req, res) => {
       { company: { $regex: search, $options: "i" } },
     ];
   }
-  
- if(jobType && jobType !== 'all') {
-  queryObj.jobType = jobType
- }
 
-if(jobStatus && jobStatus !== 'all') {
-  queryObj.jobStatus = jobStatus
-}
+  if (jobType && jobType !== "all") {
+    queryObj.jobType = jobType;
+  }
 
-const sortObj = {
-  newest: 'createdAt',
-  oldest: '-createdAt',
-  'a-z': 'position',
-  'z-a': "-position"
-}
+  if (jobStatus && jobStatus !== "all") {
+    queryObj.jobStatus = jobStatus;
+  }
 
+  const sortObj = {
+    newest: "createdAt",
+    oldest: "-createdAt",
+    "a-z": "position",
+    "z-a": "-position",
+  };
 
-  const allJobs = await Job.find(queryObj).sort(sortObj[sort]);
+  const jobLimit = req.query.limit || 10;
+  const page = req.query.page || 1;
+  const skip = (page - 1) * jobLimit;
 
-  res.status(StatusCodes.OK).json({ totalJobs: allJobs.length, allJobs });
+  const allJobs = await Job.find(queryObj)
+    .sort(sortObj[sort])
+    .skip(skip)
+    .limit(jobLimit);
+
+  const totalJobs = await Job.countDocuments(queryObj);
+  const totalPages = Math.ceil(totalJobs/jobLimit);
+
+  res.status(StatusCodes.OK).json({ totalJobs, totalPages, currentPage:page, allJobs });
 };
 
 export const createJob = async (req, res) => {
