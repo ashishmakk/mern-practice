@@ -4,7 +4,11 @@ import { StatusCodes } from "http-status-codes";
 import dayjs from "dayjs";
 
 export const getAllJobs = async (req, res) => {
-  const { search } = req.query;
+
+  const { search, jobType, jobStatus, sort } = req.query;
+  
+  console.log(req.query);
+  
 
   const queryObj = {
     createdBy: req.user.userId,
@@ -16,8 +20,24 @@ export const getAllJobs = async (req, res) => {
       { company: { $regex: search, $options: "i" } },
     ];
   }
+  
+ if(jobType && jobType !== 'all') {
+  queryObj.jobType = jobType
+ }
 
-  const allJobs = await Job.find(queryObj);
+if(jobStatus && jobStatus !== 'all') {
+  queryObj.jobStatus = jobStatus
+}
+
+const sortObj = {
+  newest: 'createdAt',
+  oldest: '-createdAt',
+  'a-z': 'position',
+  'z-a': "-position"
+}
+
+
+  const allJobs = await Job.find(queryObj).sort(sortObj[sort]);
 
   res.status(StatusCodes.OK).json({ totalJobs: allJobs.length, allJobs });
 };
