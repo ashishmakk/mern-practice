@@ -3,7 +3,6 @@ import customFetch from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { ChartsContainer, StatsContainer } from "../components";
 
-
 export const loader = async () => {
   try {
     const { data } = await customFetch.get("/jobs/stats");
@@ -19,9 +18,9 @@ function Stats() {
 
   return (
     <section>
-      <StatsContainer defaultStats={defaultStats} name="maximus" />
+      <StatsContainer defaultStats={defaultStats} name='maximus' />
       {monthlyApplications?.length > 1 && (
-        <ChartsContainer monthlyApplications={monthlyApplications} />
+        <ChartsContainer data={monthlyApplications} />
       )}
     </section>
   );
