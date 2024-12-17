@@ -24,7 +24,6 @@ import { action as deleteJobAction } from "./pages/DeleteJob";
 import { loader as adminLoader } from "./pages/Admin";
 import { action as profileUpdateAction } from "./pages/Profile";
 import { loader as statsLoader } from "./pages/Stats";
-import {action as jobSearchAction} from './components/SearchContainer'
 
 const router = createBrowserRouter([
   {
@@ -46,7 +45,7 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <AddJob />, action: addJobAction },
           { path: "stats", element: <Stats />, loader: statsLoader },
-          { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader, action: jobSearchAction },
+          { path: "all-jobs", element: <AllJobs />, loader: allJobsLoader },
           {
             path: "profile",
             element: <Profile />,

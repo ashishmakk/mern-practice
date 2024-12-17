@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormRow({ type, name, labelText, defaultValue }) {
+function FormRow({ type, name, labelText, defaultValue, onChange }) {
   return (
     <div className='flex flex-col gap-y-2'>
       <label htmlFor={name} className=' capitalize'>
@@ -11,6 +11,7 @@ function FormRow({ type, name, labelText, defaultValue }) {
         id={name}
         name={name}
         defaultValue={defaultValue || ""}
+        onChange={onChange}
         required
         className='border-2 border-[#e4e4e4] outline-none p-3 rounded-md'
       />
