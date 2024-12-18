@@ -126,7 +126,7 @@ p {
 }
 
 .arrow-btn {
-  background: #252525;
+  background: #6671e5;
   color: #ffffff;
   padding: 0.5rem 0.7rem;
   border: none;
@@ -136,9 +136,9 @@ p {
 }
 
 .page-btn {
-  background: #474747;
+  background: #8a8a8a;
   color: #ffffff;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
   text-transform: capitalize;
@@ -146,9 +146,9 @@ p {
 }
 
 .active-btn {
-  background: #7a7a7a;
+  background: #393939;
   color: #ffffff;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
   text-transform: capitalize;
