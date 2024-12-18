@@ -7,7 +7,7 @@ function JobsContainer() {
 
   if (allJobs.length === 0) {
     return (
-      <section>
+      <section className='mt-10'>
         <h2>No jobs to display</h2>
       </section>
     );

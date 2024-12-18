@@ -7,18 +7,18 @@ import customFetch from "../utils/customFetch";
 import { useAllJobsContext } from "../pages/AllJobs";
 
 function SearchContainer() {
-
   const { searchValues } = useAllJobsContext();
   const { search, jobType, jobStatus, sort } = searchValues;
   const submit = useSubmit();
- 
-  const debounce = (onChange) => {
-    let timeout;
+
+  const debounce = () => {
+    let timeoutId;
+
     return (e) => {
       const form = e.currentTarget.form;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        onChange(form);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        submit(form);
       }, 2000);
     };
   };
@@ -32,36 +32,28 @@ function SearchContainer() {
             name='search'
             type='search'
             defaultValue={search}
-            onChange={debounce((form) => {
-              submit(form);
-            })}
+            onChange={debounce()}
           />
           <FormRowSelect
             data={["all", ...jobStatusArray]}
             labelText='Job status'
             name='jobStatus'
             defaultValue={jobStatus}
-            onChange={(e) => {
-              return submit(e.currentTarget.form);
-            }}
+            onChange={debounce()}
           />
           <FormRowSelect
             data={["all", ...jobTypeArray]}
             labelText='Job type'
             name='jobType'
             defaultValue={jobType}
-            onChange={(e) => {
-              return submit(e.currentTarget.form);
-            }}
+            onChange={debounce()}
           />
           <FormRowSelect
             data={sortArray}
             labelText='Sort'
             name='sort'
             defaultValue={sort}
-            onChange={(e) => {
-              return submit(e.currentTarget.form);
-            }}
+            onChange={debounce()}
           />
         </div>
         <Link to='/dashboard/all-jobs' className='form-btn'>
