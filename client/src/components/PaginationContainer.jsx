@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function PaginationContainer() {
+  
   const { data } = useAllJobsContext();
   const { totalJobs, totalPages, currentPage, allJobs } = data;
 
@@ -13,8 +14,10 @@ function PaginationContainer() {
   const { search, pathname } = useLocation();
 
   const handlePageChange = (pageNum) => {
+    
     const searchParams = new URLSearchParams(search);
-    searchParams.set("page", pageNum);
+    searchParams.set('page', pageNum);
+    
     navigate(`${pathname}?${searchParams.toString()}`);
   };
 
@@ -51,11 +54,13 @@ function PaginationContainer() {
         className='arrow-btn'
         onClick={() => {
           let nextPage = currentPage + 1;
-          if (nextPage > totalPages) nextPage = 1;
+          if (nextPage > totalPages) {
+            nextPage = 1;
+          }
           handlePageChange(nextPage);
         }}
       >
-        <FaArrowRight />
+        <FaArrowLeft />
       </button>
     </div>
   );
