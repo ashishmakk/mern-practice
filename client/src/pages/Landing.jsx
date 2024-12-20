@@ -11,7 +11,7 @@ function Landing() {
         </div>
       </nav>
       <div className='alignment grid gap-y-4 mt-12'>
-        <h1>Job portal apppppp</h1>
+        <h1>Job portal app</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
           pariatur ipsam quibusdam eum possimus. Quaerat nostrum voluptates

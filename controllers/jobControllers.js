@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
 import dayjs from "dayjs";
-
+import Job from "../models/jobModel.js";
 
 export const getAllJobs = async (req, res) => {
-
   const { search, jobType, jobStatus, sort } = req.query;
 
   console.log(req.query);
@@ -46,9 +44,11 @@ export const getAllJobs = async (req, res) => {
     .limit(jobLimit);
 
   const totalJobs = await Job.countDocuments(queryObj);
-  const totalPages = Math.ceil(totalJobs/jobLimit);
+  const totalPages = Math.ceil(totalJobs / jobLimit);
 
-  res.status(StatusCodes.OK).json({ totalJobs, totalPages, currentPage:page, allJobs });
+  res
+    .status(StatusCodes.OK)
+    .json({ totalJobs, totalPages, currentPage: page, allJobs });
 };
 
 export const createJob = async (req, res) => {
